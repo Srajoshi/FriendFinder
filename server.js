@@ -5,7 +5,8 @@ const express = require("express");
 // initialize server and port number;
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+// const PORT = 3000;
 
 // set up express middleware (.json), urlencoded
 app.use(express.urlencoded({extended: true}));
