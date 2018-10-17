@@ -34,7 +34,7 @@
     <div class="container">
       <h4>I have a vivid imagination.</h4>
       <select class="chosen-select" id="ques2">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -47,7 +47,7 @@
     <div class="container">
       <h4>I love large parties.</h4>
       <select class="chosen-select" id="ques3">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -60,7 +60,7 @@
     <div class="container">
       <h4>I am a Cat person.</h4>
       <select class="chosen-select" id="ques4">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -72,7 +72,7 @@
     <div class="container">
       <h4>I take charge.</h4>
       <select class="chosen-select" id="ques5">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -84,7 +84,7 @@
     <div class="container">
       <h4>I prefer variety to routine.</h4>
       <select class="chosen-select" id="ques6">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -96,7 +96,7 @@
     <div class="container">
       <h4>I tend to vote for libereal political candidates.</h4>
       <select class="chosen-select" id="ques7">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -108,7 +108,7 @@
     <div class="container">
       <h4>I seek adventure.</h4>
       <select class="chosen-select" id="ques8">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -120,7 +120,7 @@
     <div class="container">
       <h4>I prefer to read than go to a party.</h4>
       <select class="chosen-select" id="ques9">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -132,7 +132,7 @@
     <div class="container">
       <h4>I can't stand confrontations.</h4>
       <select class="chosen-select" id="ques10">
-          <option selected>Select an Option</option>
+        <option selected>Select an Option</option>
         <option value="1">1 (Strongly Disagree</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -152,50 +152,87 @@
     </div>
   </footer>
   <br>
+  <!-- Modal from bootstrap -->
+  <div id="match-modal" class="modal fade" role="dialog" style="display: none;">
+    <div class="modal dialog">
+      <div class="modal content">
+        <div class="modal header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          <h2 class="modal-title">Best Match</h2>
+        </div>
+        <div class="modal-body">
+          <h2 id="match-name"></h2>
+          <img id="match-img" alt>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
-  <!-- <script>
+  <script>
     $(document).ready(function () {
 
       // add event listener for form submission
-      $("#submit-btn").on("click", function (event) {
+      $("#submit").on("click", function (event) {
 
         event.preventDefault();
-
-        const reservationData = {
+        // store input in variables
+        let newFriend = {
           name: $("#name-input").val().trim(),
-          phoneNumber: $("#phone-input").val().trim(),
-          email: $("#email-input").val().trim(),
-          uniqueId: $("#id-input").val().trim()
+          photo: $("#image").val().trim(),
+          scores: [
+            $("#ques1").val().trim(),
+            $("#ques2").val().trim(),
+            $("#ques3").val().trim(),
+            $("#ques4").val().trim(),
+            $("#ques5").val().trim(),
+            $("#ques6").val().trim(),
+            $("#ques7").val().trim(),
+            $("#ques8").val().trim(),
+            $("#ques9").val().trim(),
+            $("#ques10").val().trim()
+
+          ]
         };
 
+        console.log(("newFriend = " + newFriend));
+
         // send data to server
-        $.ajax({
-          url: "/api/reservations",
-          method: "POST",
-          data: reservationData // req.body
-        }).then(function (response) {
-          console.log(response);
-          if (response.waitingList) {
-            alert(`You are on the waiting list at reservation number ${response.reservationNumber}`);
-          } else {
-            alert(`You are reservation number ${response.reservationNumber}`);
-          }
-          // clear form data
-          $("#name-input").val("");
-          $("#phone-input").val("");
-          $("#email-input").val("");
-          $("#id-input").val("");
-        })
 
-      })
+        $.post("/api/friends", newFriend,
+          function (data) {
+            console.log("from survey.js " + JSON.stringify(response));
+            // set the name and photo os best match
+            $("#match-name").html(data.matchName);
+            $("#match-image").html(data.matchImage);
+            // open dialog box
+            $("#modal").modal("open");
 
+            // clear form data
+            $("#name-input").val("");
+            $("#image").val("");
+            $("#ques1").val(""),
+              $("#ques2").val(""),
+              $("#ques3").val(""),
+              $("#ques4").val(""),
+              $("#ques5").val(""),
+              $("#ques6").val(""),
+              $("#ques7").val(""),
+              $("#ques8").val(""),
+              $("#ques9").val(""),
+              $("#ques10").val("")
 
-    })
-  </script> -->
+          });
+
+      });
+    });
+  </script>
 </body>
 
 </html>
