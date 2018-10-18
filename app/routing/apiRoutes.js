@@ -30,9 +30,9 @@ module.exports = function (app) {
 
     let difference = 0;
 
-      for(let k = 0; k < userResponses.length; k++) {
+      for(let j = 0; j < userResponses.length; j++) {
 
-        difference += Math.abs(friendsData[i].scores[k] - userResponses[k]);
+        difference += Math.abs(friendsData[i].scores[j] - userResponses[j]);
 
       }
       
