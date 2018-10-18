@@ -200,7 +200,8 @@
       }
       
       if (flag === true) {
-        
+        console.log(flag)
+
         // store input in variables
         let newFriend = {
           name: $("#name-input").val().trim(),
@@ -231,6 +232,8 @@
             $("#best-match").html("Best Match");
             $("#match-name").html(data.matchName);
             $("#match-image").attr("src", data.matchImage);
+            // $("#match-body").html('<img src="" '+ data.matchImage + 'height = 700">');
+
             // open dialog box
             $("#match-modal").modal("toggle");
 
@@ -247,10 +250,11 @@
               $("#ques8").val(""),
               $("#ques9").val(""),
               $("#ques10").val("")
-
+              
+            
           });
         } else {
-          // console.log(flag)
+          console.log(flag)
           // alert("Please answer all questions")
           
             $("#best-match").html("Error");
@@ -259,6 +263,8 @@
             $("#match-modal").modal("toggle");
 
         }
+        flag === false;
+        // $("#match-body").html("");
     });
 
   </script>
