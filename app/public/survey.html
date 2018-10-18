@@ -257,14 +257,16 @@
           console.log(flag)
           // alert("Please answer all questions")
           
-            $("#best-match").html("Error");
-            $("#match-body").html("Please answer all questions");
+            $("#best-match").html("Error: ");
+            $("#match-name").html("Please answer all questions");
+            $("#match-image").attr("src", "");
+            // $("#match-body").html("Please answer all questions");
             // open dialog box
             $("#match-modal").modal("toggle");
 
         }
         flag === false;
-        // $("#match-body").html("");
+        
     });
 
   </script>

@@ -18,15 +18,15 @@ module.exports = function (app) {
 
     const userResponses = newFriend.scores;
     console.log("UserResponses: ", userResponses);
-    // best match 
+    // best match variable initialized
     let matchName = "";
     let matchImage = "";
     // large value initially for comparison
     let totalDiff = 1000
-
+    // for each user response:
     for (let i = 0; i < friendsData.length; i++) {
       console.log("friendsData.length = " + friendsData.length)
-    // looping over each question to determine the difference
+    // looping over each in our friends data to determine the difference
 
     let difference = 0;
 
@@ -35,7 +35,7 @@ module.exports = function (app) {
         difference += Math.abs(friendsData[i].scores[j] - userResponses[j]);
 
       }
-      
+      // comparing difference
       if (difference < totalDiff) {
 
         totalDiff = difference;
