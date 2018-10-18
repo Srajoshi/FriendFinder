@@ -153,16 +153,16 @@
   </footer>
   <br>
   <!-- Modal from bootstrap -->
-  <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="best-match" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Best Match</h5>
+          <h5 class="modal-title" id="best-match"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id = "match-body">
           <h2 id="match-name"></h2>
           <img id="match-image" width=750 src="match-image">
         </div>
@@ -192,14 +192,15 @@
 
       if ($("#name-input").val() === "empty" || $("#image").val() === "") {
         flag = false;
-        alert("Please answer all questions")
+        
       } else if ($("#ques1").val() === "empty" || $("#ques2").val() === "empty" || $("#ques3").val() === "empty" || $("#ques4").val() === "empty" || $("#ques5").val() === "empty" || $("#ques6").val() === "empty" || $("#ques7").val() === "empty" || $("#ques8").val() === "empty" || $("#ques9").val() === "empty" || $("#ques10").val() === "empty") {
         
         flag = false;
     
       }
-
+      
       if (flag === true) {
+        
         // store input in variables
         let newFriend = {
           name: $("#name-input").val().trim(),
@@ -227,6 +228,7 @@
           function (data) {
             console.log("from survey.js ", data);
             // set the name and photo os best match
+            $("#best-match").html("Best Match");
             $("#match-name").html(data.matchName);
             $("#match-image").attr("src", data.matchImage);
             // open dialog box
@@ -248,8 +250,14 @@
 
           });
         } else {
+          // console.log(flag)
+          // alert("Please answer all questions")
+          
+            $("#best-match").html("Error");
+            $("#match-body").html("Please answer all questions");
+            // open dialog box
+            $("#match-modal").modal("toggle");
 
-          alert("Please answer all questions")
         }
     });
 
