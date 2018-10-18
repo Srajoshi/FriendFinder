@@ -10,32 +10,31 @@ module.exports = function (app) {
     res.json(friendsData);
   });
 
-  // create POST route to receive data from our front end and add ti our freindsData
+  // create POST route to receive data from our front end and check for a match. And also add it our freindsData
   app.post("/api/friends", function (req, res) {
     // take the sent information and store ina variable.
     const newFriend = req.body;
     console.log(newFriend);
 
     const userResponses = newFriend.scores;
-
+    console.log("UserResponses: ", userResponses);
     // best match 
     let matchName = "";
     let matchImage = "";
     // large value initially for comparison
-    let totalDiff = 5000
+    let totalDiff = 1000
 
-    for (let i = 0; 1 < friendsData.length; i++) {
+    for (let i = 0; i < friendsData.length; i++) {
       console.log("friendsData.length = " + friendsData.length)
     // looping over each question to determine the difference
 
     let difference = 0;
 
-    for(let j = 0; j < userResponses.length; j++) {
-      // console.log("friendsData[i].scores[j]" + friendsData[i].scores[j]);
+      for(let k = 0; k < userResponses.length; k++) {
 
-      difference += Math.abs(friendsData[i].scores[j]- userResponses[j]);
+        difference += Math.abs(friendsData[i].scores[k] - userResponses[k]);
 
-    }
+      }
       
       if (difference < totalDiff) {
 

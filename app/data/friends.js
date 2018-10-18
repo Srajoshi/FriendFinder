@@ -23,6 +23,14 @@ const friendsData = [
       "3", "4", "1", "1", "1", "2", "1", "4", "3", "1"
     ]
 
+  },
+  {
+    name: "Thor",
+    photo: "https://vignette.wikia.nocookie.net/marvelmovies/images/b/b2/Thor_Avengers2.png/revision/latest?cb=20111215055347",
+    scores: [
+      "1", "3", "5", "1", "5", "5", "3", "5", "1", "1"
+    ]
+
   }
 ];
 
