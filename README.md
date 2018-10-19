@@ -17,26 +17,26 @@ The survey asks 10 personality determining questions. Each answer is on a scale 
 
 Here is a screen shot of the home screen:
 
-![alt text](app/public/images/homescreen.png "Survey questions") 
+![alt text](/images/homescreen.png "Survey questions") 
 
 Here are two screen shots of the survey questions:
 
-![alt text](app/public/images/survey.png "Survey questions") 
+![alt text](/images/survey.png "Survey questions") 
 
-![alt text](app/public/images/survey1.png "Survey questions") 
+![alt text](/images/survey2.png "Survey questions") 
 
 
 Here is a screen shot of the Error message while validating all data entered by user:
 
-![alt text](app/public/images/Errormsg.png "Error Messgae") 
+![alt text](/images/Errormsg.png "Error Messgae") 
 
 Here is a screen shot of the JSON file of users data used to fine matches for new users:
 
-![alt text](app/public/images/JSONdatafile.png "Data in JSON") 
+![alt text](/images/JSONdatafile.png "Data in JSON") 
 
 Here is a screen shot of the Best Match!
 
-![alt text](app/public/images/BestMatch.jpg "Data in JSON") 
+![alt text](/images/BestMatch.jpg "Data in JSON") 
 
 
 
